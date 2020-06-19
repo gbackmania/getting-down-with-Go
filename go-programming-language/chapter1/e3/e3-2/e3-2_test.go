@@ -11,6 +11,9 @@ func EchoString() []string {
 
 }
 
-func BenchmarkEcho(b *testing.B) {
-	fmt.Println(strings.Join(EchoString()[1:], " "))
+func BenchmarkJoinEcho(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		fmt.Println(strings.Join(EchoString()[1:], " "))
+	}
+
 }

@@ -11,10 +11,13 @@ func EchoString() []string {
 }
 
 func BenchmarkConcatEcho(b *testing.B) {
-	s, sep := "", " "
-	for _, arg := range EchoString() {
-		s += arg + sep
+	for i := 0; i < b.N; i++ {
+		s, sep := "", " "
+		for _, arg := range EchoString()[1:] {
+			s += arg + sep
 
+		}
+		fmt.Println(s)
 	}
-	fmt.Println(s)
+
 }
